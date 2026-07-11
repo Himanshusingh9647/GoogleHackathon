@@ -1,0 +1,29 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UserRequest {
+  id          String     @id @default(uuid())
+  schedule    String
+  budget      Float
+  dietType    String
+  exclusions  String
+  createdAt   DateTime   @default(now())
+  mealPlans   MealPlan[]
+}
+
+model MealPlan {
+  id            String      @id @default(uuid())
+  requestId     String
+  request       UserRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  menu          String      // JSON string representing breakfast, lunch, dinner
+  groceryList   String      // JSON string representing aggregated grocery list
+  substitutions String      // JSON string representing substitutions
+  budgetCheck   String      // JSON string representing budget check & breakdown
+  createdAt     DateTime    @default(now())
+}

@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #10b981; /* emerald-500 */
+  --color-primary-hover: #059669; /* emerald-600 */
+  --color-accent: #f59e0b; /* amber-500 */
+  --color-accent-hover: #d97706; /* amber-600 */
+  --font-display: "Outfit", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+/* Custom Base Styles for Premium Dark Mode */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: #020617; /* slate-950 */
+    color: #f8fafc; /* slate-50 */
+  }
+
+  /* Accessible visible keyboard focus outline */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+}
+
+/* Custom Scrollbar for Premium Look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a; /* slate-900 */
+}
+::-webkit-scrollbar-thumb {
+  background: #334155; /* slate-700 */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569; /* slate-600 */
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+  transform: translateY(-2px);
+}
